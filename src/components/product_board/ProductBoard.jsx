@@ -2,6 +2,7 @@ import Arraival from "../shared/Arraival";
 import CountProduct from "./CountProduct";
 import FilterProduct from "./FilterProduct";
 import ProductCard from "./ProductCard";
+import SearchProduct from "./SearchProduct";
 import SortProduct from "./SortProduct";
 
 export default function ProductBoard() {
@@ -17,7 +18,7 @@ export default function ProductBoard() {
             </div>
 
             <div className="flex gap-2 items-center">
-              {/* <SearchProduct /> */}
+              <SearchProduct />
               <CountProduct />
             </div>
           </div>

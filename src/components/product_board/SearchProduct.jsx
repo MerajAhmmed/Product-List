@@ -1,6 +1,8 @@
+import { useState } from "react";
 import SearchProductSvg from "../svg/productSvg/SearchProductSvg";
 
 export default function SearchProduct() {
+  [searchText, setSearchText] = useState();
   return (
     <div className="flex flex-1 items-center px-3.5 py-2 text-gray-400 group hover:ring-1 hover:ring-gray-300 focus-within:!ring-2 ring-inset focus-within:!ring-teal-500 rounded-md">
       <SearchProductSvg />
@@ -13,8 +15,9 @@ export default function SearchProduct() {
         type="text"
         aria-expanded="false"
         aria-autocomplete="list"
-        value=""
-        style="caret-color: rgb(107, 114, 128)"
+        onChange={(e) => setSearchText(e.target.value)}
+        value={searchText}
+        style={{ caretColor: "rgb(107, 114, 128)" }}
       />
     </div>
   );
