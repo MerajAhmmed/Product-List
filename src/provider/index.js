@@ -1,3 +1,4 @@
 import ProductProvider from "./ProductProvider";
+import SearchProvider from "./SearchProvider";
 
-export { ProductProvider };
+export { ProductProvider, SearchProvider };

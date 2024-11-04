@@ -1,11 +1,15 @@
+import { useState } from "react";
 import Arraival from "../shared/Arraival";
 import CountProduct from "./CountProduct";
-import FilterProduct from "./FilterProduct";
-import ProductCard from "./ProductCard";
+import ProductCard from "./Products";
 import SearchProduct from "./SearchProduct";
-import SortProduct from "./SortProduct";
+import SortFilterProduct from "./SortFilterProduct";
 
 export default function ProductBoard() {
+  const [sort, setSort] = useState(null);
+  function handleSort(type) {
+    setSort(type);
+  }
   return (
     <div>
       <div className="pt-16 sm:pt-24 lg:pt-40">
@@ -13,8 +17,7 @@ export default function ProductBoard() {
         <div className="mt-10">
           <div className="flex justify-between relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
             <div className="w-full">
-              <SortProduct />
-              <FilterProduct />
+              <SortFilterProduct onSort={handleSort} />
             </div>
 
             <div className="flex gap-2 items-center">
@@ -24,7 +27,7 @@ export default function ProductBoard() {
           </div>
         </div>
 
-        <ProductCard />
+        <ProductCard sort={sort} />
       </div>
     </div>
   );
