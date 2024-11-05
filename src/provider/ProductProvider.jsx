@@ -4,10 +4,11 @@ import useProuduct from "../hooks/useProduct";
 
 const ProductProvider = ({ children }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { productData, error, loading } = useProuduct(selectedCategory);
+
+  const { productData, error, loading, setProductData } =
+    useProuduct(selectedCategory);
   function handleSelectedCategory(category) {
     setSelectedCategory(category);
-    console.log(category);
   }
 
   return (
@@ -18,6 +19,8 @@ const ProductProvider = ({ children }) => {
         loading,
         selectedCategory,
         onSelectedCategory: handleSelectedCategory,
+        setProductData,
+        
       }}
     >
       {children}

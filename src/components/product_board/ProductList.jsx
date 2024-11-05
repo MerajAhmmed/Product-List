@@ -1,6 +1,11 @@
 import ProductCardSvg from "../svg/productSvg/ProductCardSvg";
 
-export default function ProductList({ product }) {
+export default function ProductList({
+  product,
+  handleAddToCart,
+  cartProducts,
+}) {
+  const isInCart = cartProducts.find((item) => item.id === product.id);
   return (
     <div className="relative">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none lg:h-80">
@@ -19,9 +24,12 @@ export default function ProductList({ product }) {
       </div>
 
       <div className="cursor-pointer rounded-md bg-white text-[0.8125rem] font-medium leading-5 text-slate-700 ring-1  hover:ring-1 ring-slate-700/10 hover:bg-slate-50 hover:text-slate-900 items-center text-center mb-3 mx-3 flex-1">
-        <div className="flex px-3 py-2 justify-center">
+        <div
+          className="flex px-3 py-2 justify-center"
+          onClick={() => handleAddToCart(product)}
+        >
           <ProductCardSvg />
-          Add To Cart
+          {isInCart ? "Remove To Cart" : "Add To Cart"}
         </div>
       </div>
     </div>

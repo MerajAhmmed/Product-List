@@ -33,6 +33,9 @@ const useProduct = (selectedCategory) => {
         const data = await response.json();
 
         setProductData(data);
+        if (error) {
+          setError(null);
+        }
       } catch (err) {
         setError(err.message);
       } finally {
