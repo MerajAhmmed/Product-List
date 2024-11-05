@@ -29,7 +29,7 @@ export default function ProductList({
           onClick={() => handleAddToCart(product)}
         >
           <ProductCardSvg />
-          {isInCart ? "Remove To Cart" : "Add To Cart"}
+          {isInCart ? "Remove From Cart" : "Add To Cart"}
         </div>
       </div>
     </div>

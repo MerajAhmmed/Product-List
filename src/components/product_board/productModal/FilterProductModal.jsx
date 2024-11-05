@@ -1,8 +1,17 @@
 import { useContext } from "react";
 import { ProductContext } from "../../../context";
 
-export default function FilterProductModal({ categories }) {
+export default function FilterProductModal({ categories, onFilterModal }) {
   const { onSelectedCategory, selectedCategory } = useContext(ProductContext);
+
+  function handleFilterChange(category) {
+    if (category === selectedCategory) {
+      onSelectedCategory("");
+    } else {
+      onSelectedCategory(category);
+    }
+    onFilterModal();
+  }
 
   return (
     <div
@@ -24,9 +33,7 @@ export default function FilterProductModal({ categories }) {
                 type="checkbox"
                 className="form-checkbox h-4 w-4"
                 id="filter-option-1"
-                onChange={() =>
-                  onSelectedCategory(item === selectedCategory ? null : item)
-                }
+                onChange={() => handleFilterChange(item)}
                 checked={item === selectedCategory}
               />
               <span className="ml-2">{item}</span>

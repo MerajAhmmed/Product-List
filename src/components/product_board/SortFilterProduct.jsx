@@ -67,7 +67,12 @@ export default function SortFilterProduct({ onSort }) {
           </button>
         </div>
 
-        {showFilterModal && <FilterProductModal categories={categories} />}
+        {showFilterModal && (
+          <FilterProductModal
+            categories={categories}
+            onFilterModal={handleFilterModal}
+          />
+        )}
       </div>
     </>
   );

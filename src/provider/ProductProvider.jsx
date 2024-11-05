@@ -20,7 +20,6 @@ const ProductProvider = ({ children }) => {
         selectedCategory,
         onSelectedCategory: handleSelectedCategory,
         setProductData,
-        
       }}
     >
       {children}
