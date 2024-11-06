@@ -1,7 +1,4 @@
-import { useState } from "react";
-
 export default function CreateAccount() {
-  const [currency, setCurrency] = useState("CAD");
   return (
     <div className="ml-auto flex items-center">
       <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
@@ -30,7 +27,7 @@ export default function CreateAccount() {
             alt=""
             className="block h-auto w-5 flex-shrink-0"
           />
-          <span className="ml-3 block text-sm font-medium">{currency}</span>
+          <span className="ml-3 block text-sm font-medium">CAD</span>
           <span className="sr-only"> change currency</span>
         </a>
       </div>

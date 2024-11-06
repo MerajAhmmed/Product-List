@@ -1,44 +1,63 @@
-export default function Menu() {
+export default function Menu({ onShow }) {
+  const menu = [
+    {
+      id: crypto.randomUUID(),
+      type: "button",
+      lable: "Women",
+    },
+    {
+      id: crypto.randomUUID(),
+      type: "button",
+      lable: "Men",
+    },
+    {
+      id: crypto.randomUUID(),
+      type: "link",
+      lable: "Company",
+    },
+    {
+      id: crypto.randomUUID(),
+      type: "link",
+      lable: "Stores",
+    },
+  ];
   return (
-    <div className="hidden lg:ml-8 lg:block lg:self-stretch">
+    <div
+      className={`${
+        onShow
+          ? "block lg:hidden w-full bg-teal-100 p-4 absolute left-0 top-24"
+          : "hidden lg:flex lg:ml-8 lg:self-stretch"
+      }`}
+    >
       <div className="flex h-full space-x-8">
-        <div className="flex">
-          <div className="relative flex">
-            {/* <!-- Item active: "border-teal-600 text-teal-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
-            <button
-              type="button"
-              className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800"
-              aria-expanded="false"
+        {menu.map((item) =>
+          item.type === "button" ? (
+            <div key={item.id} className="flex">
+              <div className="relative flex">
+     
+                <button
+                  type="button"
+                  className={`relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 ${
+                    onShow
+                      ? "border-teal-600 text-teal-600"
+                      : "border-transparent text-gray-700 hover:text-gray-800"
+                  }`}
+                  aria-expanded={onShow}
+                >
+                  {item.lable}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <a
+              key={item.id}
+              href="#"
+              className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
             >
-              Women
-            </button>
-          </div>
-        </div>
-        <div className="flex">
-          <div className="relative flex">
-            {/* <!-- Item active: "border-teal-600 text-teal-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
-            <button
-              type="button"
-              className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800"
-              aria-expanded="false"
-            >
-              Men
-            </button>
-          </div>
-        </div>
-
-        <a
-          href="#"
-          className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-        >
-          Company
-        </a>
-        <a
-          href="#"
-          className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-        >
-          Stores
-        </a>
+              {item.lable}
+            </a>
+          )
+        )}
       </div>
     </div>
   );
